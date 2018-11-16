@@ -1,20 +1,20 @@
 package com.roger.servlet;
 
 import com.roger.adapter.HandlerAdapterService;
-import com.roger.annotation.*;
+import com.roger.annotation.RogerController;
+import com.roger.annotation.RogerRequestMapping;
+import com.roger.annotation.RogerResource;
+import com.roger.annotation.RogerService;
 import com.roger.util.PropertiesUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
