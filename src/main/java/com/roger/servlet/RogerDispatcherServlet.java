@@ -20,6 +20,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ConcurrentMap;
 
 public class RogerDispatcherServlet extends HttpServlet {
 
@@ -66,7 +67,14 @@ public class RogerDispatcherServlet extends HttpServlet {
     private List<String> clazzFilePathList = new ArrayList<>();
     //IOC 容器
     private Map<String, Object> clazzInstanceMap = new HashMap<>();
-    //URL和Method映射关系的容器
+
+    //因为servlet是单例的，是线程不安全的，所以在定义Map集合的时候
+    //可以时ConcurrentMap集合来当容器
+
+    //URL和Method映射关系的容器 key 为 requestUrlPath value为方法
+    //如果Controller上没有加@RogerRequestMapping注解，这样就不能根据
+    //requestUrlPath找到方法对应的Controller实例；因此可以新增
+    //一个Map集合存储controller实例，key为 requestUrlPath value 为controller实例
     private Map<String, Method> urlMethodMap = new HashMap<>();
 
     @Override
