@@ -59,6 +59,8 @@ public class RogerDispatcherServlet extends HttpServlet {
         }catch (InvocationTargetException | IllegalAccessException e){
             resp.getWriter().write("500 Server Internal!");
         }
+        //页面转发
+        //req.getRequestDispatcher(prefix + pageName + suffix);
     }
 
     //属性文件
